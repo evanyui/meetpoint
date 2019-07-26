@@ -21,7 +21,7 @@ class InitialControls extends Component {
             container
             justify="center"
             alignItems="stretch">
-                <IconButton variant="outlined" color="primary" onClick={this.onRecord}>
+                <IconButton color="primary" onClick={this.onRecord}>
                     <MicIcon></MicIcon>
                 </IconButton>
             </Grid>

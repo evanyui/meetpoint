@@ -11,10 +11,10 @@ class PostRecordControls extends Component {
             container
             justify="space-between"
             alignItems="stretch">
-                <IconButton variant="outlined" color="primary">
+                <IconButton color="primary">
                     <PlayArrowIcon></PlayArrowIcon>
                 </IconButton>
-                <IconButton variant="outlined" color="primary">
+                <IconButton color="primary">
                     <SaveIcon></SaveIcon>
                 </IconButton>
             </Grid>

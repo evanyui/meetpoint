@@ -21,12 +21,11 @@ class RecordingControls extends Component {
             <Grid
             container
             justify="center"
-            alignItems="stretch"
-            spacing={1}>
-                <IconButton variant="outlined" color="primary">
+            alignItems="stretch">
+                <IconButton color="primary">
                     <PauseIcon></PauseIcon>
                 </IconButton>
-                <IconButton variant="outlined" color="primary" onClick={this.stopRecord}>
+                <IconButton color="primary" onClick={this.stopRecord}>
                     <StopIcon></StopIcon>
                 </IconButton>
             </Grid>
