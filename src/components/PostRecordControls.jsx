@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
 
 class PostRecordControls extends Component {
@@ -9,16 +11,12 @@ class PostRecordControls extends Component {
             container
             justify="space-between"
             alignItems="stretch">
-                <Grid item xs={2}>
-                    <Button variant="outlined" color="primary" fullWidth={true}>
-                        Play
-                    </Button>
-                </Grid>
-                <Grid item xs={2}>
-                    <Button variant="outlined" color="primary" fullWidth={true}>
-                        Save Audio
-                    </Button>
-                </Grid>
+                <IconButton variant="outlined" color="primary">
+                    <PlayArrowIcon></PlayArrowIcon>
+                </IconButton>
+                <IconButton variant="outlined" color="primary">
+                    <SaveIcon></SaveIcon>
+                </IconButton>
             </Grid>
         )
     }

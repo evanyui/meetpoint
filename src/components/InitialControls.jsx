@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MicIcon from '@material-ui/icons/Mic';
 import Grid from '@material-ui/core/Grid';
 import { STATUS } from '../utils/constants';
 
@@ -20,11 +21,9 @@ class InitialControls extends Component {
             container
             justify="center"
             alignItems="stretch">
-                <Grid item xs={2}>
-                    <Button variant="outlined" color="primary" fullWidth={true} onClick={this.onRecord}>
-                        Record
-                    </Button>
-                </Grid>
+                <IconButton variant="outlined" color="primary" onClick={this.onRecord}>
+                    <MicIcon></MicIcon>
+                </IconButton>
             </Grid>
         )
     }
