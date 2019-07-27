@@ -5,15 +5,31 @@ import PostRecordControls from './PostRecordControls';
 import RecordingControls from './RecordingControls';
 import InitialControls from './InitialControls';
 import { STATUS } from '../utils/constants';
+import recognition from '../utils/recognition';
 
 class Recorder extends Component {
 
     constructor(props) {
         super(props);
         this.stateChange = this.stateChange.bind(this);
+        this.recognition = recognition;
+        this.recognition.onresult = this.onRecognition;
         this.state = {
-            status: STATUS[0]
+            status: STATUS[0] // initial status
         };
+    }
+
+    componentDidUpdate() {
+        if (this.state.status === STATUS[1]) {
+            recognition.start();
+        } else if (this.state.status === STATUS[2]) {
+            recognition.onend = undefined; // cut off continuity
+            recognition.stop();
+        }
+    }
+
+    onRecognition(event) {
+        console.log(event.results);
     }
 
     stateChange(status) {

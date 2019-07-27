@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import PauseIcon from '@material-ui/icons/Pause';
-import StopIcon from '@material-ui/icons/Stop';
+import StopIcon from '@material-ui/icons/StopRounded';
 import { STATUS } from '../utils/constants';
 
 class RecordingControls extends Component {
@@ -22,9 +21,6 @@ class RecordingControls extends Component {
             container
             justify="center"
             alignItems="stretch">
-                <IconButton color="primary">
-                    <PauseIcon></PauseIcon>
-                </IconButton>
                 <IconButton color="primary" onClick={this.stopRecord}>
                     <StopIcon></StopIcon>
                 </IconButton>
