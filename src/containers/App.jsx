@@ -17,6 +17,20 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.updateTranscripts = this.updateTranscripts.bind(this);
+        this.state = {
+            transcripts: []
+        };
+    }
+
+    updateTranscripts(transcript) {
+        this.setState((prevState) => {
+            return {transcripts: [...prevState.transcripts, transcript]}
+        });
+    }
+
     render() {
         return (
             <MuiThemeProvider theme={theme}>
@@ -27,10 +41,10 @@ class App extends Component {
                     alignItems="stretch"
                     spacing={10}>
                         <Grid item>
-                            <Top/>
+                            <Top updateTranscripts={this.updateTranscripts}/>
                         </Grid>
                         <Grid item>
-                            <Bottom/>
+                            <Bottom transcripts={this.state.transcripts}/>
                         </Grid>
                     </Grid>
                 </Box>
