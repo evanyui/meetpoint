@@ -1,0 +1,6 @@
+.visualizer {
+    border-radius: 8px;
+    /* To control maximum size of visualizer component depending on parent */
+    width: 100%; 
+    height: 100px;
+}

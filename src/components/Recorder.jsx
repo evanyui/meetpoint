@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import PostRecordControls from './PostRecordControls';
 import RecordingControls from './RecordingControls';
 import InitialControls from './InitialControls';
 import { STATUS } from '../utils/constants';
 import recognition from '../utils/recognition';
+import { ReactMic } from 'react-mic';
+
+import '../styles/recorder.css';
 
 class Recorder extends Component {
 
@@ -50,9 +54,26 @@ class Recorder extends Component {
 
     render() {
         return (
-            <Paper>
-                <Box p={2}>
-                    {this.getControls()}
+            <Paper
+            elevation={3}
+            style={{
+                borderRadius: 16
+            }}
+            >
+                <Box p={2} borderRadius={50}>
+                    <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="stretch"
+                    spacing={1}>
+                        <ReactMic
+                        record={this.state.status === STATUS[1]}
+                        strokeColor="#637796"
+                        backgroundColor="#fafafa"
+                        />
+                        {this.getControls()}
+                    </Grid>
                 </Box>
             </Paper>
         );
