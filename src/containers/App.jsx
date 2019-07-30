@@ -39,7 +39,7 @@ class App extends Component {
                     direction="column"
                     justify="center"
                     alignItems="stretch"
-                    spacing={10}>
+                    spacing={4}>
                         <Grid item>
                             <Top updateTranscripts={this.updateTranscripts}/>
                         </Grid>
