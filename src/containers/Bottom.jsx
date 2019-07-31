@@ -15,7 +15,9 @@ class Bottom extends Component {
                     <TitleBar/>
                 </Grid>
                 <Grid item>
-                    <Transcript transcripts={this.props.transcripts} />
+                    <Transcript 
+                    transcripts={this.props.transcripts}
+                    currentTranscript={this.props.currentTranscript} />
                 </Grid>
             </Grid>
         )

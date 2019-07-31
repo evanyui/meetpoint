@@ -9,7 +9,9 @@ class Top extends Component {
             justify="center"
             alignItems="center">
                 <Grid item xs={10}>
-                    <Recorder updateTranscripts={this.props.updateTranscripts}/>
+                    <Recorder 
+                    updateTranscripts={this.props.updateTranscripts}
+                    updateCurrentTranscript={this.props.updateCurrentTranscript}/>
                 </Grid>
             </Grid>
         );

@@ -13,6 +13,7 @@ class Transcript extends Component {
                     {this.props.transcripts.map((transcript, index) => {
                         return (<Typography key={index} variant="subtitle1">{transcript}</Typography>);
                     })}
+                    <Typography variant="subtitle1">{this.props.currentTranscript}</Typography>
                 </Grid>
             </Grid>
         );

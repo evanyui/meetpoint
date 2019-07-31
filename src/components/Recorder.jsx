@@ -29,6 +29,8 @@ class Recorder extends Component {
         const result = event.results[event.results.length-1];
         if (result.isFinal) {
             this.props.updateTranscripts(result[0].transcript);
+        } else {
+            this.props.updateCurrentTranscript(result[0].transcript);
         }
     }
 
