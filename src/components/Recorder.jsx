@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import PostRecordControls from './PostRecordControls';
+import PlaybackControls from './PlaybackControls';
 import RecordingControls from './RecordingControls';
 import InitialControls from './InitialControls';
 import { STATUS } from '../utils/constants';
@@ -17,11 +17,13 @@ class Recorder extends Component {
         super(props);
         this.stateChange = this.stateChange.bind(this);
         this.onRecognition = this.onRecognition.bind(this);
+        this.onStop = this.onStop.bind(this);
         this.recognition = recognition;
         this.recognition.onresult = this.onRecognition;
         this.state = {
             recording: false,
             status: STATUS[0], // initial status
+            blobURL: null
         };
     }
 
@@ -37,9 +39,12 @@ class Recorder extends Component {
     switchRecognition(status) {
         if (status === STATUS[1]) {
             recognition.start();
+            this.setState({recording: true});
         } else if (status === STATUS[2]) {
             recognition.onend = undefined; // cut off continuity
             recognition.stop();
+            // Stop recording after calling onStop() to save recorded audio blob 
+            // this.setState({recording: false});
         }
     }
 
@@ -56,7 +61,32 @@ class Recorder extends Component {
         } else if (this.state.status === STATUS[1]) {
             return (<RecordingControls stateChange={this.stateChange}/>);
         } else if (this.state.status === STATUS[2]) {
-            return (<PostRecordControls/>);
+            return (<PlaybackControls/>);
+        }
+    }
+
+    onStop(blobObject) {
+        this.setState({blobURL: blobObject.blobURL, recording: false});
+    }
+
+    getVisualizerOrPlayer() {
+        if (!this.state.recording && this.state.status === STATUS[2]) {
+            return (
+                <audio 
+                style={{width: "-webkit-fill-available"}}
+                ref="audioSource" 
+                controls="controls" 
+                src={this.state.blobURL}
+                />);
+        } else {
+            return (
+                <ReactMic
+                record={this.state.status === STATUS[1]}
+                onStop={this.onStop}
+                strokeColor="#637796"
+                backgroundColor="#f1f3f4"
+                visualSetting="frequencyBars"
+                />);
         }
     }
 
@@ -66,20 +96,16 @@ class Recorder extends Component {
             elevation={3}
             style={{
                 borderRadius: 16
-            }}
-            >
-                <Box p={2} pb={1} borderRadius={50}>
+            }}>
+                <Box height={200} p={2} borderRadius={50}>
                     <Grid
                     container
                     direction="column"
                     justify="center"
-                    alignItems="stretch">
+                    alignItems="stretch"
+                    style={{height: "-webkit-fill-available"}}>
                         <Box mb={1}>
-                        <ReactMic
-                        record={this.state.status === STATUS[1]}
-                        strokeColor="#637796"
-                        backgroundColor="#fafafa"
-                        />
+                        {this.getVisualizerOrPlayer()}
                         </Box>
                         {this.getControls()}
                     </Grid>

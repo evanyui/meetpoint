@@ -16,7 +16,7 @@ class TitleBar extends Component {
                         <Grid item>
                             <Typography 
                             variant="h2" 
-                            style={{fontWeight: 600, color: "lightgray"}}>
+                            style={{fontWeight: 600, color: "lightGray"}}>
                                 Transcript
                             </Typography>
                         </Grid>

@@ -12,9 +12,9 @@ import 'typeface-roboto';
 const theme = createMuiTheme({
     palette: {
         primary: { main: amber[600], contrastText: 'white' }, 
-        secondary: {main: amber[400], contrastText: 'white' }
+        secondary: {main: "#637796", contrastText: 'white' }
     },
-    spacing: 16
+    spacing: 16,
 });
 
 class App extends Component {
