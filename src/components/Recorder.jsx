@@ -21,7 +21,6 @@ class Recorder extends Component {
         this.recognition = recognition;
         this.recognition.onresult = this.onRecognition;
         this.state = {
-            recording: false,
             status: STATUS[0], // initial status
             blobURL: null
         };
@@ -39,7 +38,6 @@ class Recorder extends Component {
     switchRecognition(status) {
         if (status === STATUS[1]) {
             recognition.start();
-            this.setState({recording: true});
         } else if (status === STATUS[2]) {
             recognition.onend = undefined; // cut off continuity
             recognition.stop();
@@ -66,17 +64,18 @@ class Recorder extends Component {
     }
 
     onStop(blobObject) {
-        this.setState({blobURL: blobObject.blobURL, recording: false});
+        this.setState({blobURL: blobObject.blobURL});
     }
 
     getVisualizerOrPlayer() {
-        if (!this.state.recording && this.state.status === STATUS[2]) {
+        if (this.state.blobURL && this.state.status === STATUS[2]) {
             return (
                 <audio 
                 style={{width: "-webkit-fill-available"}}
                 ref="audioSource" 
                 controls="controls" 
                 src={this.state.blobURL}
+                preload={true}
                 />);
         } else {
             return (
