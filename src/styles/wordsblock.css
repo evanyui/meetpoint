@@ -1,0 +1,5 @@
+.wordsblock:hover{
+     background-color: rgba(255, 179, 0, 0.08) !important;
+     border-radius: 5px;
+     color: #FFB300;
+}

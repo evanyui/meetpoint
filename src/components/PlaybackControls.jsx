@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
-import PlayArrowIcon from '@material-ui/icons/PlayArrowRounded';
-import SaveIcon from '@material-ui/icons/Save';
+import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Grid from '@material-ui/core/Grid';
 
 class PlaybackControls extends Component {
@@ -9,13 +8,10 @@ class PlaybackControls extends Component {
         return (
             <Grid
             container
-            justify="space-between"
+            justify="center"
             alignItems="stretch">
                 <IconButton color="primary">
-                    <PlayArrowIcon></PlayArrowIcon>
-                </IconButton>
-                <IconButton color="primary">
-                    <SaveIcon></SaveIcon>
+                    <RefreshIcon></RefreshIcon>
                 </IconButton>
             </Grid>
         )

@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MicIcon from '@material-ui/icons/Mic';
 import Grid from '@material-ui/core/Grid';
 import { STATUS } from '../utils/constants';
+import Timer from '../utils/Timer';
 
 class InitialControls extends Component {
 
@@ -13,6 +14,7 @@ class InitialControls extends Component {
 
     onRecord() {
         this.props.stateChange(STATUS[1]);
+        Timer.startTimer();
     }
 
     render() {

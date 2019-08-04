@@ -22,16 +22,18 @@ class Recorder extends Component {
         this.recognition.onresult = this.onRecognition;
         this.state = {
             status: STATUS[0], // initial status
-            blobURL: null
+            blobURL: null,
+            isSpeechEventNew: true
         };
     }
 
     onRecognition(event) {
         const result = event.results[event.results.length-1];
+        this.props.updateCurrentTranscript(result[0].transcript, this.state.isSpeechEventNew);
+        this.setState({isSpeechEventNew: false});
         if (result.isFinal) {
-            this.props.updateTranscripts(result[0].transcript);
-        } else {
-            this.props.updateCurrentTranscript(result[0].transcript);
+            this.props.updateTranscripts();
+            this.setState({isSpeechEventNew: true});
         }
     }
 
@@ -71,11 +73,11 @@ class Recorder extends Component {
         if (this.state.blobURL && this.state.status === STATUS[2]) {
             return (
                 <audio 
+                id="audio"
                 style={{width: "-webkit-fill-available"}}
                 ref="audioSource" 
                 controls="controls" 
                 src={this.state.blobURL}
-                preload={true}
                 />);
         } else {
             return (
@@ -84,7 +86,7 @@ class Recorder extends Component {
                 onStop={this.onStop}
                 strokeColor="#637796"
                 backgroundColor="#f1f3f4"
-                visualSetting="frequencyBars"
+                // visualSetting="frequencyBars"
                 />);
         }
     }
