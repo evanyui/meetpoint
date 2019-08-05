@@ -61,7 +61,7 @@ class Recorder extends Component {
         } else if (this.state.status === STATUS[1]) {
             return (<RecordingControls stateChange={this.stateChange}/>);
         } else if (this.state.status === STATUS[2]) {
-            return (<PlaybackControls/>);
+            return (<PlaybackControls stateChange={this.stateChange}/>);
         }
     }
 

@@ -1,9 +1,13 @@
 export const playAudio = () => {
     const audio = document.getElementById("audio");
-    audio.play();
+    if (audio) {
+        audio.play();
+    }
 };
 
 export const setTime = (seconds) => {
     const audio = document.getElementById("audio");
-    audio.currentTime = seconds;
+    if (audio) {
+        audio.currentTime = seconds;
+    }
 };

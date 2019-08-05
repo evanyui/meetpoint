@@ -13,11 +13,8 @@ class WordsBlock extends PureComponent {
     }
 
     onClick(event) {
-        if (audio) {
-            console.log(this.props.time);
-            audio.playAudio();
-            audio.setTime(this.props.time);
-        }
+        audio.playAudio();
+        audio.setTime(this.props.time);
     }
     
     render() {
